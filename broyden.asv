@@ -1,0 +1,37 @@
+function z = Broyden(fcn,x,tol)
+% Broyden method for the roots of 
+% a set of nonlinear equations
+% Requires no explicit computation of Jacobian
+% fcn = string containing the name of the function (vector)
+% x = an initial guess (vector)
+% tol = the tolerance
+% Usage z = Broyden('fcnEg5p15',[1; 2],1e-12)
+% See example 5.16 on p.242 of Heath
+% This version requires only O(n^2) arithmetic operations/loop.
+% K. Ming Leung, 02/21/03
+
+maxIt = 20;
+it = 0; err = 1;
+A=eye(length(x));
+% Replace the above line by the following line
+% if a function to compute the Jacobian is available.
+%B = feval('fcnJEg5p15',x); A=inv(B);
+
+f = feval(fcn,x);
+s = -A*f;     % Change in the root 
+n2 = s.'*s;   % Norm squared
+x = x+s;      % Next approximation to the root
+while it < maxIt & sqrt(n2) > tol
+    f = feval(fcn,x);
+    u = A*f;
+    v = s.'*A;
+    d = 1/(n2+s.'*u);
+    A = A-d*u*v;
+    s = -A*f;
+    n2 = s.'*s;
+    x = x+s,
+    it = it+1;
+end
+z = x;
+
+
