@@ -1,0 +1,23 @@
+disp('1.- Newton');
+disp('2.- Biseccion');
+disp('3- Secante');
+opci=input('Ingrese el tipo de ecuasion: ');
+switch opci
+    case 1
+       funcion = (x^3)-(6*x^2)+(11*x)-6.11;
+       x0 = 3;
+       tolerancia=0.00001;
+       newtonEc(funcion,x0, tolerancia);
+    case 2
+       funcion=(exp(x)) - (x^2) + (3*x) -2;
+       raiz_aprox=   0;
+       limite_superior=0;
+       limite_inferior=1;
+       biseccionEc(funcion, raiz_aprox, limite_superior,limite_inferior);   
+    case 3
+        %     y = x * log(x)- 10;
+    
+%     raiz0=8;
+%     raiz1=9;
+        secanteEc (funcion, raiz0, raiz1);
+end  

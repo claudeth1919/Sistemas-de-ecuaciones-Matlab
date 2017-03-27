@@ -1,12 +1,11 @@
-function newton()
-    syms x;
-    y = cos(x)-x;
-    x0 = 0;
+function newtonEc (funcion, x0, tolerancia)
+%     syms x;
+    y = funcion;
     error =1212;
     i = 1;
-    formato = 'Iteración: %d con raíz aprox de %.9f \n';
+    formato = 'Iteracion: %d con raiz aprox de %.9f \n';
 
-    while (abs(error)>0.00002)
+    while (abs(error)>tolerancia)
         tabla(1,i) = i;
         aux = x0;
         raiz = x0 - (subs(y, x0) / subs(diff(y),x0));
@@ -16,5 +15,4 @@ function newton()
         fprintf(formato,tabla(1,i),tabla(2,i));
         i = i + 1;
     end
-    disp(tabla);
 end
