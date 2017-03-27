@@ -1,7 +1,7 @@
 function biseccionEc (funcion, raiz_aprox, limite_superior,limite_inferior)
-    syms x;
+%     syms x;
     y = funcion;
-%     raiz_aprox=0;
+%     raiz_aprox=   0;
     error=1212;
 %     limite_superior=0;
 %     limite_inferior=1;
