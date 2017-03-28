@@ -1,0 +1,33 @@
+function puntoFijoNo(funciones,x0, N)
+    G=str2func(strcat('@(x)[',funciones,'];'));
+    n = size(x0,1);
+    if n == 1
+       x0 = x0';
+    end
+
+    i = 1;
+    y(:,1) = x0;
+    tol = 1e-05;
+    while i <= N
+       y(:,i+1) = G(y(:,i));
+       if abs(y(:,i+1)-y(:,i)) < tol		
+          disp('El procedimiento fue exitoso con k iteraciones')
+          k = i
+          disp('Solucion iterada del sis')
+          y = y'
+          return
+       end
+       i = i+1;
+    end
+
+    if abs(y(:,i)-y(:,i-1)) > tol || i > N
+       disp('The procedure was unsuccessful')
+       disp('Condition |y(i+1)-y(i)| < tol was not sastified')
+       disp('Please, examine the sequence of iterates')
+       disp('In case you observe convergence, then increase the maximum number of iterations')
+       disp('In case of divergence, try another initial approximation x0')
+       y = y'
+    end
+
+end
+

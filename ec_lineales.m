@@ -20,4 +20,7 @@ switch opci
         raiz0=8;
         raiz1=9;
         secanteEc (funcion, raiz0, raiz1);
+     otherwise
+        disp('No existe esa opcion');
+        ec_lineales
 end  

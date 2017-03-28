@@ -17,7 +17,11 @@ switch opc
                sis_ec_no_lineales;   
         end  
     case 2
-       ec_lineales;   
+       ec_lineales;  
+       
+    otherwise
+        disp('No existe esa opcion');
+        menu
 end        
 
       

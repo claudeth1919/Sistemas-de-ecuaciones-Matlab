@@ -38,5 +38,6 @@ switch opcion
        val_relajacion=1.26;
        seidel(matriz,terminos_independientes,vector_aprox,num_it,tol,val_relajacion);
    otherwise
-      disp('Esta opcion no existe en el sistema');
+        disp('No existe esa opcion');
+        sis_ec_lineales
 end
